@@ -58,31 +58,8 @@ enum {
 EEMEM unsigned long pos10m, pos17m, pos20m, pos40m, defaultBand, defaultPosition;    //a variable stored in EEPROM
 long bar1, bar2;            //regular variables in SRAM
 
-//This function will write a 2 byte integer to the eeprom at the specified address and address + 1
-
-// void EEPROMWriteInt(int p_address, int p_value) {
-//   byte lowByte = ((p_value >> 0) & 0xFF);
-//   byte highByte = ((p_value >> 8) & 0xFF);
-
-//   EEPROM.write(p_address, lowByte);
-//   EEPROM.write(p_address + 1, highByte);
-// }
-
-// //This function will read a 2 byte integer from the eeprom at the specified address and address + 1
-// unsigned int EEPROMReadInt(int p_address) {
-//   byte lowByte = EEPROM.read(p_address);
-//   byte highByte = EEPROM.read(p_address + 1);
-
-//   return ((lowByte << 0) & 0xFF) + ((highByte << 8) & 0xFF00);
-  
-// }
-
 int read_LCD_buttons(){               // read the buttons
   adc_key_in = analogRead(0);       // read the value from the sensor
-
-  // my buttons when read are centered at these valies: 0, 144, 329, 504, 741
-  // we add approx 50 to those values and check to see if we are close
-  // We make this the 1st option for speed reasons since it will be the most likely result
 
   if (adc_key_in > 1000) return btnNONE;
 
