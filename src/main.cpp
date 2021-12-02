@@ -187,7 +187,7 @@ void setup() {
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("BAND GoTo   Now");
+  lcd.print("BAND GoTo  Now");
 
   // set stepper motor speed:
   myStepper.setMaxSpeed(800);
