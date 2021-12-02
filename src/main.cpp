@@ -133,10 +133,6 @@ void displayselection(int select){
   }
 }
 
-// int memBand(int band){
-//   return band*2;
-// }
-
 void memwritebandposition (int band){
   switch (band)
   {
@@ -191,7 +187,7 @@ void setup() {
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("BAND MoveTo  Now");
+  lcd.print("BAND GoTo   Now");
 
   // set stepper motor speed:
   myStepper.setMaxSpeed(800);
@@ -258,7 +254,6 @@ void loop() {
       if (!myStepper.isRunning()) myStepper.disableOutputs();
       if(selectTime < 500) {
         bandselected = selection;
-        //EEPROMWriteInt(memCurrentBand, bandselected);
         eeprom_write_dword( &defaultBand, bandselected );
         eeprom_write_dword( &defaultPosition, memreadbandposition(selection));
         lcd.setCursor(3,1);
@@ -268,8 +263,6 @@ void loop() {
       }
 
       if(selectTime > 500 && selectTime < 2000 ){
-        // EEPROMWriteInt(0, bandselected);
-        //EEPROMWriteInt(memBand(selection), myStepper.currentPosition());
         memwritebandposition(selection);
         // lcd.setCursor(4,1);
         // lcd.print("w"); 
